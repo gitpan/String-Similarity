@@ -19,7 +19,7 @@ package String::Similarity;
 
 require DynaLoader;
 
-$VERSION = 0.02;
+$VERSION = 1.0;
 @ISA = qw/Exporter DynaLoader/;
 @EXPORT = qw(similarity);
 @EXPORT_OK = qw(fstrcmp);

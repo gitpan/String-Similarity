@@ -1,7 +1,13 @@
 Revision history for Perl extension String::Similarity
 
+1.0  Fri Jan 30 15:16:16 CET 2004
+        - Fixed correctness in the presence of non-latin1-characters, at a
+          small speed penalty. Based on an idea by Dave Evans.
+        - perl 5.8.x+ required.
+
 0.02  Thu Nov 16 01:30:16 CET 2000
 	- added minimum_similarity limit to speed up some searches
+        - last version to work with perls <5.8.x.
 
 0.01  Fri Apr  7 08:03:08 CEST 2000
 	- original version; leftover "garbage" from the PApp module

@@ -8,3 +8,4 @@ Similarity.xs
 fstrcmp.h	fstrcmp (from gnu gettext)
 fstrcmp.c	fstrcmp (from gnu gettext)
 t/00_load.t
+META.yml                                 Module meta-data (added by MakeMaker)

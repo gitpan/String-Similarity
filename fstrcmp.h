@@ -22,6 +22,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.  */
 
 #define PARAMS(proto) proto
 
-double fstrcmp (const char *__s1, const char *__s2, double __minimum);
+typedef UV CHAR;
+
+double fstrcmp (const UV *__s1, int __l1, const UV *__s2, int __l2, double __minimum);
 
 #endif
