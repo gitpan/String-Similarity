@@ -7,6 +7,7 @@ String::Similarity - calculate the similarity of two strings
  use String::Similarity;
 
  $similarity = similarity $string1, $string2;
+ $similarity = similarity $string1, $string2, $limit;
 
 =head1 DESCRIPTION
 
@@ -18,22 +19,31 @@ package String::Similarity;
 
 require DynaLoader;
 
-$VERSION = 0.01;
+$VERSION = 0.02;
 @ISA = qw/Exporter DynaLoader/;
 @EXPORT = qw(similarity);
 @EXPORT_OK = qw(fstrcmp);
 
 bootstrap String::Similarity $VERSION;
 
-=item $factor = similarity $string1, $string2
+=item $factor = similarity $string1, $string2, [$limit]
 
-The C<similarity>-function calulcates the similarity index of its
-two arguments.  A value of C<0> means that the strings are entirely
-different. A value of C<1> means the strings are identical. Everything
-else lies describes the amount of similarity between the strings.
+The C<similarity>-function calculates the similarity index of
+its two arguments.  A value of C<0> means that the strings are
+entirely different. A value of C<1> means that the strings are
+identical. Everything else lies between 0 and 1 and describes the amount
+of similarity between the strings.
 
 It roughly works by looking at the smallest number of edits to change one
 string into the other.
+
+You can add an optional argument C<$limit> (default 0) that gives the
+minimum similarity the two strings must satisfy. C<similarity> stops
+analyzing the string as soon as the result drops below the given limit,
+in which case the result will be invalid but lower than the given
+C<$limit>. You can use this to speed up the common case of searching for
+the most similar string from a set by specifing the maximum similarity
+found so far.
 
 =cut
 
@@ -60,7 +70,9 @@ string into the other.
  Marc Lehmann <pcg@goof.com>
  http://www.goof.com/pcg/marc/
 
- (the underlying fstrcmp function was written by Peter Miller <pmiller@agso.gov.au>)
+ (the underlying fstrcmp function was taken from gnu diffutils and
+ modified by Peter Miller <pmiller@agso.gov.au> and Marc Lehmann
+ <pcg@goof.com>).
 
 
 

@@ -28,7 +28,13 @@
    Information and Control Vol. 64, 1985, pp. 100-118.
 
    Modified to work on strings rather than files
-   by Peter Miller <pmiller@agso.gov.au>, October 1995 */
+   by Peter Miller <pmiller@agso.gov.au>, October 1995
+
+   Modified to accept a "minimum similarity limit" to stop analyzing the
+   string when the similarity drops below the given limit by Marc Lehmann
+   <pcg@goof.com>.
+
+*/
 
 #include <string.h>
 #include <stdio.h>
@@ -55,6 +61,7 @@ struct string_data
 
 static struct string_data string[2];
 
+static int max_edits; /* compareseq stops when edits > max_edits */
 
 #ifdef MINUS_H_FLAG
 
@@ -481,6 +488,9 @@ compareseq (xoff, xlim, yoff, ylim, minimal)
   const char *const xv = string[0].data;	/* Help the compiler.  */
   const char *const yv = string[1].data;
 
+  if (string[1].edit_count + string[0].edit_count > max_edits)
+    return;
+
   /* Slide down the bottom initial diagonal. */
   while (xoff < xlim && yoff < ylim && xv[xoff] == yv[yoff])
     {
@@ -550,7 +560,7 @@ compareseq (xoff, xlim, yoff, ylim, minimal)
 	fstrcmp - fuzzy string compare
 
    SYNOPSIS
-	double fstrcmp(const char *, const char *);
+	double fstrcmp(const char *, const char *, double);
 
    DESCRIPTION
 	The fstrcmp function may be used to compare two string for
@@ -564,9 +574,7 @@ compareseq (xoff, xlim, yoff, ylim, minimal)
 	similar.  */
 
 double
-fstrcmp (string1, string2)
-     const char *string1;
-     const char *string2;
+fstrcmp (const char *string1, const char *string2, double minimum)
 {
   int i;
 
@@ -607,6 +615,8 @@ fstrcmp (string1, string2)
   fdiag = fdiag_buf + string[1].data_length + 1;
   bdiag = fdiag + fdiag_len;
 
+  max_edits = 1 + (string[0].data_length + string[1].data_length) * (1. - minimum);
+
   /* Now do the main comparison algorithm */
   string[0].edit_count = 0;
   string[1].edit_count = 0;
@@ -616,7 +626,8 @@ fstrcmp (string1, string2)
 	((number of chars in common) / (average length of the strings)).
      This is admittedly biased towards finding that the strings are
      similar, however it does produce meaningful results.  */
-  return ((double) (string[0].data_length + string[1].data_length -
-    string[1].edit_count - string[0].edit_count) / (string[0].data_length
-    + string[1].data_length));
+  return ((double)
+             (string[0].data_length + string[1].data_length - string[1].edit_count - string[0].edit_count)
+           / (string[0].data_length + string[1].data_length));
+
 }
