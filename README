@@ -37,10 +37,10 @@ SEE ALSO
      Information and Control Vol. 64, 1985, pp. 100-118.
 
 AUTHOR
-     Marc Lehmann <pcg@goof.com>
-     http://www.goof.com/pcg/marc/
+     Marc Lehmann <schmorp@schmorp.de>
+     http://home.schmorp.de/
 
      (the underlying fstrcmp function was taken from gnu diffutils and
      modified by Peter Miller <pmiller@agso.gov.au> and Marc Lehmann
-     <pcg@goof.com>).
+     <schmorp@schmorp.de>).
 

@@ -19,7 +19,7 @@ package String::Similarity;
 
 require DynaLoader;
 
-$VERSION = 1.0;
+$VERSION = '1.01';
 @ISA = qw/Exporter DynaLoader/;
 @EXPORT = qw(similarity);
 @EXPORT_OK = qw(fstrcmp);
@@ -67,12 +67,12 @@ found so far.
 
 =head1 AUTHOR
 
- Marc Lehmann <pcg@goof.com>
- http://www.goof.com/pcg/marc/
+ Marc Lehmann <schmorp@schmorp.de>
+ http://home.schmorp.de/
 
  (the underlying fstrcmp function was taken from gnu diffutils and
  modified by Peter Miller <pmiller@agso.gov.au> and Marc Lehmann
- <pcg@goof.com>).
+ <schmorp@schmorp.de>).
 
 
 

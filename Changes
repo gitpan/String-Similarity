@@ -1,5 +1,8 @@
 Revision history for Perl extension String::Similarity
 
+1.01 Thu Mar  3 18:00:52 CET 2005
+	- change of contact address.
+
 1.0  Fri Jan 30 15:16:16 CET 2004
         - Fixed correctness in the presence of non-latin1-characters, at a
           small speed penalty. Based on an idea by Dave Evans.

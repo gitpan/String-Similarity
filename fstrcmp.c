@@ -32,10 +32,10 @@
 
    Modified to accept a "minimum similarity limit" to stop analyzing the
    string when the similarity drops below the given limit by Marc Lehmann
-   <pcg@goof.com>.
+   <schmorp@schmorp.de>.
 
    Modified to work on unicode (actually 31 bit are allowed) by Marc Lehmann
-   <pcg@goof.com>.
+   <schmorp@schmorp.de>.
 */
 
 #include <string.h>
