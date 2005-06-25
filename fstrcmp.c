@@ -45,6 +45,10 @@
 
 #include "fstrcmp.h"
 
+/* moved here from fstrcmp.h to avoid problems on lose32 machines */
+#define PARAMS(proto) proto
+typedef UV CHAR;
+
 /*
  * Data on one input string being compared.
  */

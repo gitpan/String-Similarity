@@ -1,5 +1,9 @@
 Revision history for Perl extension String::Similarity
 
+1.02 Sat Jun 25 11:53:54 CEST 2005
+	- moved CHAR typedef to fstrcmp.c to hopefully avoid problems
+          on lose32 machines.
+
 1.01 Thu Mar  3 18:00:52 CET 2005
 	- change of contact address.
 
