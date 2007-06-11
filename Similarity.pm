@@ -17,9 +17,10 @@ String::Similarity - calculate the similarity of two strings
 
 package String::Similarity;
 
-require DynaLoader;
+use Exporter;
+use DynaLoader;
 
-$VERSION = '1.02';
+$VERSION = '1.03';
 @ISA = qw/Exporter DynaLoader/;
 @EXPORT = qw(similarity);
 @EXPORT_OK = qw(fstrcmp);

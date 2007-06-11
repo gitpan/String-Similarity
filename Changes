@@ -1,8 +1,13 @@
 Revision history for Perl extension String::Similarity
 
-1.02 Sat Jun 25 11:53:54 CEST 2005
-	- moved CHAR typedef to fstrcmp.c to hopefully avoid problems
-          on lose32 machines.
+1.03 Mon Jun 11 23:15:35 CEST 2007
+	- bump the version number, seems cpan ignored the 1.02 upload.
+
+1.02 Mon Feb 12 16:26:08 CET 2007
+	- add missing use Exporter, add use DynaLoader for symmetry and
+          because I was told some bug in bleadperl might require that.
+        - add 'no warnings' to testsuite. If your perl is too old, remove
+          it.
 
 1.01 Thu Mar  3 18:00:52 CET 2005
 	- change of contact address.

@@ -1,3 +1,5 @@
+no warnings;
+
 BEGIN { $| = 1; print "1..10\n"; }
 END {print "not ok 1\n" unless $loaded;}
 use String::Similarity;
