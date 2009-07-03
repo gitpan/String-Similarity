@@ -45,13 +45,15 @@
 
 #include "fstrcmp.h"
 
+#define PARAMS(proto) proto
+
 /*
  * Data on one input string being compared.
  */
 struct string_data
 {
   /* The string to be compared. */
-  const CHAR *data;
+  const UV *data;
 
   /* The length of the string to be compared. */
   int data_length;
@@ -162,8 +164,8 @@ diag (xoff, xlim, yoff, ylim, minimal, part)
 {
   int *const fd = fdiag;	/* Give the compiler a chance. */
   int *const bd = bdiag;	/* Additional help for the compiler. */
-  const CHAR *const xv = string[0].data;	/* Still more help for the compiler. */
-  const CHAR *const yv = string[1].data;	/* And more and more . . . */
+  const UV *const xv = string[0].data;	/* Still more help for the compiler. */
+  const UV *const yv = string[1].data;	/* And more and more . . . */
   const int dmin = xoff - ylim;	/* Minimum valid diagonal. */
   const int dmax = xlim - yoff;	/* Maximum valid diagonal. */
   const int fmid = xoff - yoff;	/* Center diagonal of top-down search. */
@@ -486,8 +488,8 @@ compareseq (xoff, xlim, yoff, ylim, minimal)
      int ylim;
      int minimal;
 {
-  const CHAR *const xv = string[0].data;	/* Help the compiler.  */
-  const CHAR *const yv = string[1].data;
+  const UV *const xv = string[0].data;	/* Help the compiler.  */
+  const UV *const yv = string[1].data;
 
   if (string[1].edit_count + string[0].edit_count > max_edits)
     return;
@@ -561,7 +563,7 @@ compareseq (xoff, xlim, yoff, ylim, minimal)
 	fstrcmp - fuzzy string compare
 
    SYNOPSIS
-	double fstrcmp(const CHAR *s1, int l1, const CHAR *s2, int l2, double);
+	double fstrcmp(const ChaR *s1, int l1, const UV *s2, int l2, double);
 
    DESCRIPTION
 	The fstrcmp function may be used to compare two string for
@@ -575,8 +577,8 @@ compareseq (xoff, xlim, yoff, ylim, minimal)
 	similar.  */
 
 double
-fstrcmp (const CHAR *string1, int length1,
-         const CHAR *string2, int length2,
+fstrcmp (const UV *string1, int length1,
+         const UV *string2, int length2,
          double minimum)
 {
   int i;

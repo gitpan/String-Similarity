@@ -5,8 +5,8 @@
 #include "fstrcmp.h"
 #include "fstrcmp.c"
 
-CHAR *
-text2CHAR (SV *sv, STRLEN *lenp)
+UV *
+text2UV (SV *sv, STRLEN *lenp)
 {
   STRLEN len;
   char *s = SvPV (sv, len);
@@ -46,8 +46,8 @@ fstrcmp(s1, s2, minimum_similarity = 0)
         CODE:
 {
         STRLEN l1, l2;
-        CHAR *c1 = text2CHAR (s1, &l1);
-        CHAR *c2 = text2CHAR (s2, &l2);
+        UV *c1 = text2UV (s1, &l1);
+        UV *c2 = text2UV (s2, &l2);
         RETVAL = fstrcmp (c1, l1, c2, l2, minimum_similarity);
 }
 	OUTPUT:
